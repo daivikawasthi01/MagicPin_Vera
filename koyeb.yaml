@@ -1,0 +1,26 @@
+# Koyeb Configuration for Vera Bot Deployment
+name: vera-bot
+services:
+  - name: api
+    type: web
+    ports:
+      - port: 8080
+        path: /
+    routes:
+      - path: /
+    health_checks:
+      - path: /v1/healthz
+        port: 8080
+        interval: 30
+        timeout: 5
+        unhealthy_threshold: 3
+        healthy_threshold: 1
+    regions:
+      - sin # Singapore (low latency for India/magicpin) or fra
+    env:
+      - key: PORT
+        value: "8080"
+      - key: LLM_PROVIDER
+        value: "gemini"
+      - key: LLM_MODEL
+        value: "gemini-3.5-flash-lite"

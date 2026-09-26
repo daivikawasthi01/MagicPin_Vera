@@ -1,0 +1,177 @@
+[
+  {
+    "trigger_id": "trg_001_research_digest_dentists",
+    "kind": "research_digest",
+    "merchant": "Dr. Meera's Dental Clinic",
+    "body": "Namaste Dr. Meera, your Lajpat Nagar clinic profile reached 2,410 views with 18 patient calls this month, outperforming the metro solo practice average of 1,820 views. With the latest JIDA research showing 3-month fluoride recall intervals reduce caries recurrence by 38% for high-risk adult patients, would you like me to draft a patient recall message highlighting your Dental Cleaning offer at ₹299 for your active chart flags?",
+    "rationale": "Research digest hook anchored on verifiable data or generic trend phrasing without hallucinating sources."
+  },
+  {
+    "trigger_id": "trg_002_compliance_dci_radiograph",
+    "kind": "regulation_change",
+    "merchant": "Dr. Meera's Dental Clinic",
+    "body": "Namaste Dr. Meera, under the Dental Council of India circular issued on November 4, the maximum dose per IOPA exposure drops to 1.0 mSv by December 15. Shall I send over the compliance checklist to audit your X-ray setup for Lajpat Nagar?",
+    "rationale": "Compliance check anchored to Dental Council of India circular 2026-11-04 with 2026-12-15 timeline."
+  },
+  {
+    "trigger_id": "trg_003_recall_due_priya",
+    "kind": "recall_due",
+    "merchant": "Dr. Meera's Dental Clinic",
+    "body": "Namaste Priya, Dr. Meera's Dental Clinic here in Lajpat Nagar with 2 open slots for your 6-month cleaning due on November 12, specifically Wednesday 5 November at 6pm or Thursday 6 November at 5pm. Since your last cleaning was on May 12, would you like us to lock in the Thursday 5pm slot for you?",
+    "rationale": "Customer recall trigger for 6 month cleaning honoring language preference (hi-en mix) and visit history."
+  },
+  {
+    "trigger_id": "trg_004_perf_dip_bharat",
+    "kind": "perf_dip",
+    "merchant": "Bharat Dental Care",
+    "body": "Namaste Dr. Bharat, your profile at Bharat Dental Care in Andheri West saw 980 views and 4 calls recently, marking a 50 percent drop over the last 7 days compared to your baseline of 12 calls. Peer dentists in Andheri West average a 3.0 percent click-through rate, which gives us a clear benchmark to work toward. Want me to send the ready-to-post copy for your clinic updates?",
+    "rationale": "Loss-aversion performance dip anchored against category peer stats."
+  },
+  {
+    "trigger_id": "trg_005_renewal_due_bharat",
+    "kind": "renewal_due",
+    "merchant": "Bharat Dental Care",
+    "body": "Namaste Dr. Bharat, your Pro plan at Bharat Dental Care in Andheri West is due for renewal in 12 days. While peer dentists in Andheri West average a 3.0% click-through rate, your current profile stands at 1.8% CTR with 980 views. Shall I send over the renewal confirmation details so your practice setup remains uninterrupted?",
+    "rationale": "Subscription renewal reminder for Pro plan with 12 days remaining."
+  },
+  {
+    "trigger_id": "trg_006_festival_diwali",
+    "kind": "festival_upcoming",
+    "merchant": "Studio11 Family Salon",
+    "body": "Hi Lakshmi, with Diwali coming up on October 31, advance seasonal calendar planning helps Studio11 Family Salon in Kapra capture steady client demand early. Your active Haircut at ₹99 and Hair Spa at ₹499 offers are great for this, currently pulling in 4,980 views which outpaces the 2,400 metro salon average. Would you like me to set up a festive messaging schedule for your clients using these offers?",
+    "rationale": "Event follow-up grounded in supplied details for Diwali, merchant calls, and the trigger's available timing."
+  },
+  {
+    "trigger_id": "trg_007_bridal_followup_kavya",
+    "kind": "wedding_package_followup",
+    "merchant": "Studio11 Family Salon",
+    "body": "Hi Kavya, Studio11 Family Salon here, hoping you are doing well following your bridal trial on March 22. With your wedding coming up on November 8, now is the ideal time to start our 30-day skin prep program to ensure everything looks effortless for the big day. Would you like me to share the details of this preparation schedule?",
+    "rationale": "Bridal package follow-up for 2026-11-08 wedding citing trial on 2026-03-22."
+  },
+  {
+    "trigger_id": "trg_008_curious_ask_studio11",
+    "kind": "curious_ask_due",
+    "merchant": "Studio11 Family Salon",
+    "body": "Namaste Lakshmi, Studio11 Family Salon in Kapra has crossed 4,980 views this month, outperforming the local peer average click-through rate of 4.0% with your 4.8% CTR. Since active demand for your Haircut at ₹99 and Hair Spa at ₹499 is rising, would you like me to share a ready-to-post update highlighting these popular services for your clients this week?",
+    "rationale": "Knowledge-gathering curious ask to diversify conversation portfolio."
+  },
+  {
+    "trigger_id": "trg_009_winback_glamour",
+    "kind": "winback_eligible",
+    "merchant": "Glamour Lounge Spa & Salon",
+    "body": "Namaste Anjali, your salon profile at Glamour Lounge Spa & Salon in Aundh has seen traffic dip 30 percent over the last 38 days while peer salons in Aundh average a 4.0% click-through rate compared to your 2.2%. Shall I set up a refreshed seasonal service listing to help close that gap today?",
+    "rationale": "Merchant win-back trigger using the supplied expiry and reactivation facts without inventing a churn count."
+  },
+  {
+    "trigger_id": "trg_010_ipl_match_delhi",
+    "kind": "ipl_match_today",
+    "merchant": "SK Pizza Junction",
+    "body": "Namaste Suresh, with the DC vs MI match starting at 7:30 PM today near Arun Jaitley Stadium, local pizza demand is picking up fast. Since SK Pizza Junction is currently seeing 2,200 views against the metro casual dining peer average of 4,800 views, would you like me to draft a match-night special alert for your customers now?",
+    "rationale": "Event follow-up grounded in supplied details for DC vs MI, merchant calls, and the trigger's available timing."
+  },
+  {
+    "trigger_id": "trg_011_review_theme_late_delivery",
+    "kind": "review_theme_emerged",
+    "merchant": "SK Pizza Junction",
+    "body": "Namaste Suresh, SK Pizza Junction in Sant Nagar is currently seeing a 2.0% click-through rate, which trails the local peer average of 2.5%. With 4 recent reviews mentioning late deliveries, addressing this timing concern now can help improve your customer engagement. Want me to send the ready-to-post copy for your delivery update?",
+    "rationale": "Review-theme response tailored to the matching theme sentiment and available customer wording."
+  },
+  {
+    "trigger_id": "trg_012_milestone_mylari",
+    "kind": "milestone_reached",
+    "merchant": "Mylari South Indian Cafe",
+    "body": "Hi Suresh, Mylari South Indian Cafe in Indiranagar is just 5 reviews away from hitting your 150 milestone, currently pulling in 12,400 views and an 88-call volume that beats the metro casual dining peer average CTR of 2.5% with your 3.2% rate. Shall I send over a quick update for your active Weekday Lunch Thali offer to help close those final reviews?",
+    "rationale": "Performance momentum celebration coupled with high-converting offer post."
+  },
+  {
+    "trigger_id": "trg_013_corporate_thali_planning",
+    "kind": "active_planning_intent",
+    "merchant": "Mylari South Indian Cafe",
+    "body": "Hi Suresh, with 12,400 views driving traffic to Mylari South Indian Cafe in Indiranagar, setting up your corporate bulk thali packages now is a great next step. I have put together a pricing structure with tiers at ₹139 for 10 plus units, ₹129 for 25 plus units, and ₹119 for 50 plus units based on your Weekday Lunch Thali at ₹149. Shall I send over the complete outline for you to approve?",
+    "rationale": "Following up on explicit merchant planning intent for corporate bulk thali package."
+  },
+  {
+    "trigger_id": "trg_014_seasonal_acquisition_dip_powerhouse",
+    "kind": "seasonal_perf_dip",
+    "merchant": "PowerHouse Fitness",
+    "body": "Hi Karthik, PowerHouse Fitness in HSR Layout is seeing a 30% view dip this week due to the post-resolution seasonal slowdown. To help you bounce back, your active 3 FREE Trial Classes offer can be paired with high-intent social posts to match the peer neighborhood click-through rate of 4.5%. Want me to send the ready-to-post copy for your free trial campaign?",
+    "rationale": "Loss-aversion performance dip anchored against category peer stats."
+  },
+  {
+    "trigger_id": "trg_015_winback_rashmi",
+    "kind": "customer_lapsed_hard",
+    "merchant": "PowerHouse Fitness",
+    "body": "Hi Rashmi, PowerHouse Fitness here! We loved seeing your dedication across your 5-month membership focusing on weight loss, and since it has been 57 days since your last visit, we would love to help you ease back into your fitness routine with 3 FREE Trial Classes. Shall I go ahead and reserve your slot for this week?",
+    "rationale": "Hard-lapse customer follow-up grounded in 57 days away and prior focus (weight loss)."
+  },
+  {
+    "trigger_id": "trg_016_kids_yoga_program_drafting",
+    "kind": "active_planning_intent",
+    "merchant": "Zen Yoga Studio",
+    "body": "Vanakkam Padma, your Zen Yoga Studio in Mylapore is seeing strong momentum with 880 views and a 6.2 percent CTR this month. Since you asked about adding a kids yoga program, your instructor quality and small classes provide a solid foundation to highlight. Want me to send over a draft outline including age range and class format for your review?",
+    "rationale": "Following up on explicit merchant planning intent for kids yoga summer camp."
+  },
+  {
+    "trigger_id": "trg_017_kids_yoga_trial_followup_karthik",
+    "kind": "trial_followup",
+    "merchant": "Zen Yoga Studio",
+    "body": "Vanakkam Karthik, Zen Yoga Studio here! We wanted to check in following the kids yoga trial on April 22, and we have an open session slot available on Sat 3 May, 8am. Would you like us to check if we can hold this spot for the next kids yoga session?",
+    "rationale": "Trial follow-up offers the supplied next-session option for confirmation without claiming a booking is reserved."
+  },
+  {
+    "trigger_id": "trg_018_supply_atorvastatin_recall",
+    "kind": "supply_alert",
+    "merchant": "Apollo Health Plus Pharmacy",
+    "body": "Namaste Ramesh, CDSCO has issued an April 2026 recall for two sub-potent atorvastatin batches from MfrZ, numbered AT2024-1102 and AT2024-1108. Want me to draft a quick message for your repeat-Rx customers about replacing their stock?",
+    "rationale": "Urgent supply recall alert for atorvastatin from MfrZ to isolate affected stock."
+  },
+  {
+    "trigger_id": "trg_019_chronic_refill_grandfather",
+    "kind": "chronic_refill_due",
+    "merchant": "Apollo Health Plus Pharmacy",
+    "body": "Namaste Mr. Sharma, Apollo Health Plus Pharmacy here in Malviya Nagar, reminding you that your monthly stock for metformin, atorvastatin, and telmisartan is due to run out by 28 April based on your last refill on 26 March. Would you like us to help arrange a refill delivery to your saved address?",
+    "rationale": "Chronic refill reminder for metformin, atorvastatin, telmisartan by 28 April, using the supplied stock run-out date and saved delivery preference when available."
+  },
+  {
+    "trigger_id": "trg_020_summer_demand_shift",
+    "kind": "category_seasonal",
+    "merchant": "Apollo Health Plus Pharmacy",
+    "body": "Namaste Ramesh, with summer 2026 demand trends showing sunscreen rising 38 percent and antifungal needs up 45 percent, Apollo Health Plus Pharmacy in Malviya Nagar is well-positioned to outperform the local peer click-through average of 3.8 percent. Shall I send over the ready-to-post inventory shelf update for these seasonal items?",
+    "rationale": "Loss-aversion performance dip anchored against category peer stats."
+  },
+  {
+    "trigger_id": "trg_021_unverified_gbp_sunrise",
+    "kind": "gbp_unverified",
+    "merchant": "Sunrise Medicos",
+    "body": "Namaste Vikas, your Google Business Profile for Sunrise Medicos in Gomti Nagar is currently unverified, which limits your visibility to local patients. Completing verification via postcard or phone call unlocks an estimated thirty percent boost in search discovery, helping you reach peer pharmacies in the area seeing a 3.8 percent click-through rate. Would you like me to send over the quick verification steps?",
+    "rationale": "GBP verification nudge highlighting local search impression lift."
+  },
+  {
+    "trigger_id": "trg_022_cde_webinar_dentists",
+    "kind": "cde_opportunity",
+    "merchant": "Dr. Meera's Dental Clinic",
+    "body": "Namaste Dr. Meera, your Lajpat Nagar clinic profile reached 2,410 views this month, outperforming the metro solo practice average of 1,820. To support your clinical practice, the IDA Delhi chapter calendar features a webinar on digital impressions with 2 CDE credits, which is free for IDA members. Would you like me to register your slot for this session?",
+    "rationale": "Research digest hook anchored on verifiable data or generic trend phrasing without hallucinating sources."
+  },
+  {
+    "trigger_id": "trg_023_competitor_opened_dentist",
+    "kind": "competitor_opened",
+    "merchant": "Dr. Meera's Dental Clinic",
+    "body": "Namaste Dr. Meera, Smile Studio opened 1.3 kilometers away on April 8 offering Dental Cleaning at ₹199, while your Lajpat Nagar clinic currently has 2,410 views. To highlight your established expertise alongside your Dental Cleaning offer at ₹299, would you like me to draft a patient update emphasizing your clinical experience?",
+    "rationale": "Competitor-opened update for Smile Studio, framed around differentiation rather than a price match."
+  },
+  {
+    "trigger_id": "trg_024_perf_spike_zen",
+    "kind": "perf_spike",
+    "merchant": "Zen Yoga Studio",
+    "body": "Hi Padma, your calls at Zen Yoga Studio jumped 15 percent this week driven by your kids yoga post, pushing your CTR to 6.2 percent against the 4.5 percent metro peer average. With parents actively booking sessions right now, shall I send over a ready-to-post follow-up update to help fill your remaining class slots?",
+    "rationale": "Gym performance increase tied to the supplied driver and a relevant follow-up window before demand builds."
+  },
+  {
+    "trigger_id": "trg_025_dormancy_glamour",
+    "kind": "dormant_with_vera",
+    "merchant": "Glamour Lounge Spa & Salon",
+    "body": "Namaste Anjali, since it has been 38 days since your last subscription update, Glamour Lounge Spa & Salon in Aundh is currently seeing 1,200 views and a 2.2% click-through rate compared to metro averages of 2,400 views. Would you like me to send over a ready-to-post hair and skin package copy to help capture local walk-ins?",
+    "rationale": "Re-engagement check-in grounded in time since last merchant message and the previously discussed topic."
+  }
+]
