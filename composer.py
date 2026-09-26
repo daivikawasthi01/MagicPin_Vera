@@ -77,6 +77,19 @@ def has_unprovided_event_timing(body: str, trigger: Dict[str, Any]) -> bool:
         unsupported_phrases.extend([r"\bon the schedule\b", r"\bon the calendar\b"])
     return any(re.search(pattern, body, re.IGNORECASE) for pattern in unsupported_phrases)
 
+def humanize_iso_dates(text: str) -> str:
+    """Converts raw ISO dates (e.g. 2026-12-15) to natural formatted dates (e.g. 15 December 2026)."""
+    if not text:
+        return text
+    def _repl(match):
+        iso_str = match.group(0)
+        try:
+            dt = datetime.date.fromisoformat(iso_str)
+            return dt.strftime("%d %B %Y").lstrip("0")
+        except Exception:
+            return iso_str
+    return re.sub(r'\b(202[4-9]-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01]))\b', _repl, text)
+
 def accept_llm_body_or_fallback(action: Dict[str, Any], candidate: str, fallback: str, trigger: Dict[str, Any]) -> None:
     """Apply shared LLM output gates before the fact-traceability validator."""
     body = remove_mechanical_yes_suffix(candidate.strip())
@@ -834,7 +847,7 @@ def _compose_deterministic_raw(
                     runs_out_label = f" by {runs_out.day} {runs_out.strftime('%B')}"
                 except ValueError:
                     pass
-            medicines_clause = molecule_list or ("their regular medicines" if is_via_intermediary else "your regular medicines")
+            medicines_clause = molecule_list or "regular medicines"
             timing_clause = (
                 f"are expected to run out{runs_out_label}"
                 if runs_out_label else "may run out soon"
@@ -885,10 +898,14 @@ def _compose_deterministic_raw(
                 for offer in merchant.get("offers", [])
                 if isinstance(offer, dict) and offer.get("status") == "active" and offer.get("title")
             ), "")
-            offer_clause = f" with {active_customer_offer}" if active_customer_offer else ""
+            if active_customer_offer:
+                offer_line = f"our {active_customer_offer} offer is a great reset to help you restart without a heavy commitment."
+            else:
+                offer_line = "a fresh session is a great reset to help you restart without a heavy commitment."
+
             body = (
-                f"{greeting} {cust_salutation}, {days_clause}This is exactly the right time to {focus_clause}{offer_clause}, and the 3 FREE Trial Classes are a simple reset that helps you get back into your routine without a heavy commitment. "
-                "If you want, I can share the next session options that best fit your goal and keep your momentum going."
+                f"{greeting} {cust_salutation}, {days_clause}This is exactly the right time to {focus_clause}, and {offer_line} "
+                "Would you like us to share available slots for this week to keep your momentum going?"
             )
             return {
                 "conversation_id": conv_id,
@@ -915,14 +932,30 @@ def _compose_deterministic_raw(
                 slot_line = f" We currently have two openings: {first_slot} or {second_slot}."
             elif slot_count:
                 slot_line = f" We still have {slot_count} opening(s) available for this reminder window."
-            reminder_why = "before the next routine gap builds up"
+
+            if cat_slug == "dentists":
+                justification_en = "Regular 6-month hygiene care helps catch early plaque buildup and surface stains before they become harder to treat, and this is the right time to lock it in before the next routine gap builds up."
+                justification_hi = "Regular 6-month hygiene visits help catch early plaque buildup and surface stains before they become harder to treat, and this is the right time to book before the next routine gap builds up."
+            elif cat_slug == "salons":
+                justification_en = "A timely refresh keeps your grooming and personal styling looking sharp, and this is the right time to lock in your preferred timing."
+                justification_hi = "Time pe refresh se aapka grooming aur styling routine maintain rehta hai, aur yeh slot book karne ka sahi samay hai."
+            elif cat_slug == "gyms":
+                justification_en = "Staying consistent with regular check-ins helps maintain your workout momentum and locks in your fitness progress."
+                justification_hi = "Regular check-ins se aapka workout momentum bana rehta hai aur fitness progress track pe rehti hai."
+            elif cat_slug == "pharmacies":
+                justification_en = "Staying on schedule with your routine supplies ensures you avoid last-minute gaps in your regular health routine."
+                justification_hi = "Routine supplies schedule pe rakhne se aapke regular health routine mein koi gap nahi aata."
+            else:
+                justification_en = "A timely routine visit helps you stay on track and get the best personalized service."
+                justification_hi = "Time pe routine follow-up se aapki service aur routine smoothly maintain rehti hai."
+
             if is_via_intermediary:
                 target_person = f"{cust_name} ji" if cust_name != "there" else "your family member"
-                body = f"Namaste! Reminder from {m_name}: your routine {service_due} is due for {target_person}.{slot_line} Regular 6-month hygiene care helps catch early gum issues and surface stains before they become harder to treat, and this is the right time to lock it in {reminder_why}. Would you like us to reserve a slot for this week?"
+                body = f"Namaste! Reminder from {m_name}: your routine {service_due} is due for {target_person}.{slot_line} {justification_en} Would you like us to reserve a slot for this week?"
             elif "hi" in lang_pref and not is_senior:
-                body = f"Namaste {cust_salutation}! {m_name} se reminder: aapka regular {service_due} due hai.{slot_line} Regular 6-month hygiene visits help catch early gum issues and surface stains before they become harder to treat, and this is the right time to book before the next routine gap builds up. Would you like us to reserve a slot for this week?"
+                body = f"Namaste {cust_salutation}! {m_name} se reminder: aapka regular {service_due} due hai.{slot_line} {justification_hi} Would you like us to reserve a slot for this week?"
             else:
-                body = f"{greeting} {cust_salutation}, gentle reminder from {m_name}: your routine {service_due} is due.{slot_line} Regular 6-month hygiene care helps catch early gum issues and surface stains before they become harder to treat, and this is the right time to lock it in before the next routine gap builds up. Would you like us to reserve a convenient slot for this week?"
+                body = f"{greeting} {cust_salutation}, gentle reminder from {m_name}: your routine {service_due} is due.{slot_line} {justification_en} Would you like us to reserve a convenient slot for this week?"
             
             return {
                 "conversation_id": conv_id,
@@ -937,6 +970,7 @@ def _compose_deterministic_raw(
                 "suppression_key": supp_key,
                 "rationale": f"Customer recall trigger for {service_due} honoring language preference ({lang_pref}) and visit history."
             }
+
         elif kind == "trial_followup":
             raw_student_name = str(cust_name or "there")
             student_name = re.sub(r"\s*\(.*$", "", raw_student_name).strip() or "your child"
@@ -1287,10 +1321,15 @@ def _compose_deterministic_raw(
                 authority = authority or match.get("source")
 
         deadline = payload.get("deadline_iso", "")
-        if "T" in str(deadline):
-            deadline = deadline.split("T")[0]
+        if isinstance(deadline, str) and deadline.strip():
+            try:
+                parsed_dl = datetime.datetime.fromisoformat(deadline.replace("Z", "+00:00"))
+                deadline = f"{parsed_dl.day} {parsed_dl.strftime('%B %Y')}"
+            except ValueError:
+                if "T" in str(deadline):
+                    deadline = deadline.split("T")[0]
 
-        title = title or "safety and diagnostic guidelines"
+        title = humanize_iso_dates(title or "safety and diagnostic guidelines")
         loc_str = f" in {locality}" if locality else ""
         summary_note = ""
         if match and match.get("summary"):
@@ -1778,10 +1817,10 @@ def compose_deterministic(
     trigger: Dict[str, Any],
     customer: Optional[Dict[str, Any]] = None
 ) -> Dict[str, Any]:
-    """Public deterministic composer with organic question-led CTA cleanup."""
+    """Public deterministic composer with organic question-led CTA cleanup and humanized dates."""
     action = _compose_deterministic_raw(category, merchant, trigger, customer)
     if action and isinstance(action.get("body"), str):
-        action["body"] = remove_mechanical_yes_suffix(action["body"])
+        action["body"] = humanize_iso_dates(remove_mechanical_yes_suffix(action["body"]))
     return action
 
 async def compose_async(
